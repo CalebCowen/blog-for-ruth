@@ -85,7 +85,6 @@ const SuggestionButton = styled.button`
   height: 3.5rem;
   width: 100%;
   box-shadow: 0 0.2rem 1rem grey;
-  text-shadow: 0 0.2rem 1rem grey;
   margin-top: 1rem;
   font-size: 1.5rem;
   background-color: #ffffff91;
@@ -122,7 +121,6 @@ const RecentPost = styled.div`
   height: fit-content;
   max-height: 34%;
   box-shadow: 0 0.2rem 1rem grey;
-  text-shadow: 0 0.2rem 1rem grey;
   margin-top: 1rem;
   font-size: 1.5rem;
   padding: 0.5rem;

@@ -38,6 +38,7 @@ const Category = styled.button`
   font-size: 1.5rem;
   text-shadow: 0 0.2rem 1rem black;
   border: none;
+  cursor: pointer;
 `
 
 const About = styled.section`
@@ -56,6 +57,7 @@ const AboutTitle = styled.button`
   color: white;
   font-size: 1.5rem;
   border: none;
+  cursor: pointer;
 `
 
 const AboutPreview = styled.div`
@@ -66,6 +68,7 @@ const AboutPreview = styled.div`
   position: relative;
   padding: 0.5rem;
   background-color: #ffffff91;
+  cursor: pointer;
   &:after {
     content: "";
     text-align: right;
@@ -86,6 +89,7 @@ const SuggestionButton = styled.button`
   margin-top: 1rem;
   font-size: 1.5rem;
   background-color: #ffffff91;
+  cursor: pointer;
 `
 
 const RecentPostsTitle = styled.button`

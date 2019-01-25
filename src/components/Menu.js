@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import {Category} from './assets/styles/GlobalStyles'
-import {MenuContainer} from './assets/styles/MenuStyles'
+import {Category} from '../assets/styles/GlobalStyles'
+import {MenuContainer} from '../assets/styles/MenuStyles'
 
 export default class Menu extends Component {
   toggle = () => {

@@ -9,4 +9,9 @@ export const Category = styled.button`
   text-shadow: 0 0.2rem 1rem black;
   border: none;
   cursor: pointer;
+  
+   &:focus {
+     outline: none;
+     border: none;
+   }
 `

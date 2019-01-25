@@ -1,20 +1,15 @@
 import React, { Component } from 'react';
 import Menu from './Menu'
-import {Category} from './assets/styles/GlobalStyles'
+import HomePage from './HomePage'
+import {Category} from '../assets/styles/GlobalStyles'
 import {
   HeaderDiv,
   Header,
   Categories,
-  About,
-  AboutTitle,
-  AboutPreview,
-  SuggestionButton,
-  RecentPostsTitle,
-  RecentPostsContainer,
-  RecentPost,
-  Body,
+  ContentTitle,
   TitlesDiv
-} from './assets/styles/AppStyles'
+} from '../assets/styles/AppStyles'
+import {AboutTitle} from '../assets/styles/HomePageStyles'
 
 class App extends Component {
   constructor() {
@@ -33,6 +28,7 @@ class App extends Component {
       ],
       screenWidth: window.innerWidth,
       menuOpen: false,
+      currentCategory: 'Recent Posts'
     }
   }
 
@@ -42,21 +38,19 @@ class App extends Component {
     })
   }
 
+  setCurrentCategory = (e) => {
+    this.setState({currentCategory: e.target.value})
+  }
+
   renderCategories = () => {
     return this.state.categories.map((category, i) => {
-      return <Category key={i}>{category}</Category>
+      return <Category onClick={(e) => this.setCurrentCategory(e)} key={i}>{category}</Category>
     })
   }
 
   toggleMenu = () => {
     let menuOpen = !this.state.menuOpen
     this.setState({menuOpen})
-  }
-
-  renderRecentPosts = () => {
-    return this.state.recentPosts.map((post, i) => {
-      return <RecentPost key={i}>{post}</RecentPost>
-    })
   }
 
   render() {
@@ -76,23 +70,13 @@ class App extends Component {
           }
           </Categories>
           <TitlesDiv>
-            <RecentPostsTitle>Recent Posts</RecentPostsTitle>
-            {window.innerWidth > 800 && <AboutTitle>About Me</AboutTitle>}
+              <ContentTitle>{this.state.currentCategory}</ContentTitle>
+            {window.innerWidth > 800 &&
+              this.state.currentCategory === 'Recent Posts' &&
+              <AboutTitle>About Me</AboutTitle>}
           </TitlesDiv>
         </HeaderDiv>
-        <Body>
-          <RecentPostsContainer>
-            {this.renderRecentPosts()}
-          </RecentPostsContainer>
-          {window.innerWidth > 800 &&
-            <About>
-              <AboutPreview>
-                Phasellus ut bibendum arcu. Nulla eu molestie nulla. In venenatis justo erat, a elementum nulla laoreet vitae. Vestibulum vel cursus tortor. Fusce quis odio massa. Sed dignissim sapien sed leo imperdiet, eu posuere mi rhoncus. Vestibulum eros velit, convallis ac velit vel, bibendum ornare augue. Cras placerat ligula quis vulputate aliquam. Pellentesque sollicitudin blandit lacus quis lobortis. Vestibulum ac maximus massa. Etiam id sapien ornare, luctus ex a, rhoncus neque. Maecenas lectus elit, vestibulum eu semper ut, luctus id velit.
-              </AboutPreview>
-              <SuggestionButton>Suggestions</SuggestionButton>
-            </About>
-          }
-        </Body>
+        <HomePage toggled={this.state.currentCategory === 'Recent Post'} recentPosts={this.state.recentPosts}/>
       </div>
     );
   }
